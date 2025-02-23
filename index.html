@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISKCON BOOK SHOP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .book-form, .book-list {
+            margin: 20px;
+        }
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .book img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ISKCON BOOK SHOP</h1>
+    <div class="book-form">
+        <h2>Add a New Book</h2>
+        <form id="bookForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required><br><br>
+            <label for="pages">Number of Pages:</label>
+            <input type="number" id="pages" name="pages" required><br><br>
+            <label for="language">Language:</label>
+            <input type="text" id="language" name="language" required><br><br>
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher"><br><br>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required><br><br>
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image" required><br><br>
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+    <div class="book-list">
+        <h2>Book List</h2>
+        <div id="books"></div>
+    </div>
+    <script>
+        document.getElementById('bookForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const author = document.getElementById('author').value;
+            const pages = document.getElementById('pages').value;
+            const language = document.getElementById('language').value;
+            const publisher = document.getElementById('publisher').value || 'BHAKTIVEDANTA BOOK TRUST(BBT)';
+            const price = document.getElementById('price').value;
+            const image = document.getElementById('image').value;
+
+            const bookList = document.getElementById('books');
+            const bookDiv = document.createElement('div');
+            bookDiv.classList.add('book');
+            bookDiv.innerHTML = `
+                <h3>${name}</h3>
+                <p><strong>Author:</strong> ${author}</p>
+                <p><strong>Pages:</strong> ${pages}</p>
+                <p><strong>Language:</strong> ${language}</p>
+                <p><strong>Publisher:</strong> ${publisher}</p>
+                <p><strong>Price:</strong> ₹${price}</p>
+                <img src="${image}" alt="${name}">
+            `;
+            bookList.appendChild(bookDiv);
+
+            document.getElementById('bookForm').reset();
+        });
+    </script>
+</body>
+</html>
