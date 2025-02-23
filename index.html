@@ -7,73 +7,66 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
-        .book-form, .book-list {
-            margin: 20px;
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .book {
-            border: 1px solid #ccc;
+        .rank-box {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .rank-box:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        .iron { background-color: #b8b8b8; }
+        .gold { background-color: #ffd700; }
+        .diamond { background-color: #00aaff; }
+        .netherite { background-color: #3c3c3c; color: #ff4444; }
+        .buy-button {
+            margin-top: 15px;
             padding: 10px;
-            margin: 10px 0;
-        }
-        .book img {
-            max-width: 100px;
+            background-color: #ff4444;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
-    <h1>ISKCON BOOK SHOP</h1>
-    <div class="book-form">
-        <h2>Add a New Book</h2>
-        <form id="bookForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author" required><br><br>
-            <label for="pages">Number of Pages:</label>
-            <input type="number" id="pages" name="pages" required><br><br>
-            <label for="language">Language:</label>
-            <input type="text" id="language" name="language" required><br><br>
-            <label for="publisher">Publisher:</label>
-            <input type="text" id="publisher" name="publisher"><br><br>
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required><br><br>
-            <label for="image">Image URL:</label>
-            <input type="text" id="image" name="image" required><br><br>
-            <button type="submit">Add Book</button>
-        </form>
+    <h1>Minecraft Server Rank Shop</h1>
+    <div class="container">
+        <div class="rank-box iron">
+            <h2>GAUDIYA VAISHNAV SAMADHI BOOK</h2>
+            <p> <a herf="3f93f942-bc1d-4872-93ff-30ccea178221.pdf"></a><new effects></p> <!--effect and crates-->
+            <a href="upi://pay?pa=mishrasandeep@fam&pn=Minecraft%20Iron%20Rank" class="buy-button">Buy Now</a>
+        </div>
+        <div class="rank-box gold">
+            <h2>Gold Rank</h2>
+            <p>Exclusive items & features <new effects></p> <!--effect and crates-->
+            <a href="upi://pay?pa=mishrasandeep@fam&pn=Minecraft%20Gold%20Rank" class="buy-button">Buy Now</a>
+        </div>
+        <div class="rank-box diamond">
+            <h2>Diamond Rank</h2>
+            <p>Advanced rewards & effects <new effects></p> <!--effect and crates-->
+            <a href="upi://pay?pa=mishrasandeep@fam&pn=Minecraft%20Diamond%20Rank" class="buy-button">Buy Now</a>
+        </div>
+        <div class="rank-box netherite">
+            <h2>Netherite Rank</h2>
+            <p>Premium benefits & crates <new effects></p> <!--effect and crates-->
+            <a href="upi://pay?pa=mishrasandeep@fam&pn=Minecraft%20Netherite%20Rank" class="buy-button">Buy Now</a>
+        </div>
     </div>
-    <div class="book-list">
-        <h2>Book List</h2>
-        <div id="books"></div>
-    </div>
-    <script>
-        document.getElementById('bookForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const author = document.getElementById('author').value;
-            const pages = document.getElementById('pages').value;
-            const language = document.getElementById('language').value;
-            const publisher = document.getElementById('publisher').value || 'BHAKTIVEDANTA BOOK TRUST(BBT)';
-            const price = document.getElementById('price').value;
-            const image = document.getElementById('image').value;
-
-            const bookList = document.getElementById('books');
-            const bookDiv = document.createElement('div');
-            bookDiv.classList.add('book');
-            bookDiv.innerHTML = `
-                <h3>${name}</h3>
-                <p><strong>Author:</strong> ${author}</p>
-                <p><strong>Pages:</strong> ${pages}</p>
-                <p><strong>Language:</strong> ${language}</p>
-                <p><strong>Publisher:</strong> ${publisher}</p>
-                <p><strong>Price:</strong> ₹${price}</p>
-                <img src="${image}" alt="${name}">
-            `;
-            bookList.appendChild(bookDiv);
-
-            document.getElementById('bookForm').reset();
-        });
-    </script>
 </body>
 </html>
